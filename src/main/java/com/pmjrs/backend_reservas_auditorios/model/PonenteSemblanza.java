@@ -25,6 +25,13 @@ public class PonenteSemblanza {
     @Column(name = "activo")
     private Integer activo;
 
+    @PrePersist
+    public void prePersist() {
+        if (activo == null) {
+            activo = 1;
+        }
+    }
+
     @Column(name = "creado_por")
     private Integer creado_por;
 

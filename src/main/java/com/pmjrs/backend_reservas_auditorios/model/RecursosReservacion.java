@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "recurso_reservacion")
+@Table(name = "recursos_reservacion")
 public class RecursosReservacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_recurso_reservacion")
     private Long id_recurso_reservacion;
 
     @ManyToOne
@@ -19,28 +20,47 @@ public class RecursosReservacion {
     @JoinColumn(name = "id_reservacion", nullable = false)
     private Reservacion reservacion;
 
+    @Column(name = "cantidad_asignada")
     private Integer cantidad_asignada;
+
+    @Column(name = "activo")
     private Integer activo;
+
+    @PrePersist
+    public void prePersist() {
+        if (activo == null) {
+            activo = 1;
+        }
+    }
+
+    @Column(name = "creado_por")
     private Integer creado_por;
+
+    @Column(name = "creado_el")
     private LocalDate creado_el;
+
+    @Column(name = "actualizado_por")
     private Integer actualizado_por;
+
+    @Column(name = "actualizado_el")
     private LocalDate actualizado_el;
 
     public RecursosReservacion() {}
 
-    public RecursosReservacion(Recursos recurso, Reservacion reservacion, Integer cantidad_asignada, Integer activo, Integer creado_por, LocalDate creado_el, Integer actualizado_por, LocalDate actualizado_el) {
+    public RecursosReservacion(Recursos recurso, Reservacion reservacion, Integer cantidadAsignada, Integer activo,
+                               Integer creadoPor, LocalDate creadoEl, Integer actualizadoPor, LocalDate actualizadoEl) {
         this.recurso = recurso;
         this.reservacion = reservacion;
-        this.cantidad_asignada = cantidad_asignada;
+        this.cantidad_asignada = cantidadAsignada;
         this.activo = activo;
-        this.creado_por = creado_por;
-        this.creado_el = creado_el;
-        this.actualizado_por = actualizado_por;
-        this.actualizado_el = actualizado_el;
+        this.creado_por = creadoPor;
+        this.creado_el = creadoEl;
+        this.actualizado_por = actualizadoPor;
+        this.actualizado_el = actualizadoEl;
     }
 
-    public Long getId_recurso_reservacion() { return id_recurso_reservacion; }
-    public void setId_recurso_reservacion(Long id_recurso_reservacion) { this.id_recurso_reservacion = id_recurso_reservacion; }
+    public Long getIdRecursoReservacion() { return id_recurso_reservacion; }
+    public void setIdRecursoReservacion(Long idRecursoReservacion) { this.id_recurso_reservacion = idRecursoReservacion; }
 
     public Recursos getRecurso() { return recurso; }
     public void setRecurso(Recursos recurso) { this.recurso = recurso; }
@@ -48,21 +68,21 @@ public class RecursosReservacion {
     public Reservacion getReservacion() { return reservacion; }
     public void setReservacion(Reservacion reservacion) { this.reservacion = reservacion; }
 
-    public Integer getCantidad_asignada() { return cantidad_asignada; }
-    public void setCantidad_asignada(Integer cantidad_asignada) { this.cantidad_asignada = cantidad_asignada; }
+    public Integer getCantidadAsignada() { return cantidad_asignada; }
+    public void setCantidadAsignada(Integer cantidadAsignada) { this.cantidad_asignada = cantidadAsignada; }
 
     public Integer getActivo() { return activo; }
     public void setActivo(Integer activo) { this.activo = activo; }
 
-    public Integer getCreado_por() { return creado_por; }
-    public void setCreado_por(Integer creado_por) { this.creado_por = creado_por; }
+    public Integer getCreadoPor() { return creado_por; }
+    public void setCreadoPor(Integer creadoPor) { this.creado_por = creadoPor; }
 
-    public LocalDate getCreado_el() { return creado_el; }
-    public void setCreado_el(LocalDate creado_el) { this.creado_el = creado_el; }
+    public LocalDate getCreadoEl() { return creado_el; }
+    public void setCreadoEl(LocalDate creadoEl) { this.creado_el = creadoEl; }
 
-    public Integer getActualizado_por() { return actualizado_por; }
-    public void setActualizado_por(Integer actualizado_por) { this.actualizado_por = actualizado_por; }
-    
-    public LocalDate getActualizado_el() { return actualizado_el; }
-    public void setActualizado_el(LocalDate actualizado_el) { this.actualizado_el = actualizado_el; }
+    public Integer getActualizadoPor() { return actualizado_por; }
+    public void setActualizadoPor(Integer actualizadoPor) { this.actualizado_por = actualizadoPor; }
+
+    public LocalDate getActualizadoEl() { return actualizado_el; }
+    public void setActualizadoEl(LocalDate actualizadoEl) { this.actualizado_el = actualizadoEl; }
 }

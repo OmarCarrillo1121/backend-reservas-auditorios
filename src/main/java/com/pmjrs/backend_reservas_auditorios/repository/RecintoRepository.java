@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RecintoRepository extends JpaRepository<Recinto, Long> {
+    // Aquí puedes agregar consultas personalizadas si las necesitas
 }

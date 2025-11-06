@@ -39,7 +39,6 @@ public class PonenteController {
                 .map(ponente -> {
                     ponente.setNombrePonente(ponenteDetails.getNombrePonente());
                     ponente.setGradoPonente(ponenteDetails.getGradoPonente());
-                    ponente.setSemblanzaPonente(ponenteDetails.getSemblanzaPonente());
                     ponente.setTipoPonente(ponenteDetails.getTipoPonente());
                     ponente.setActivo(ponenteDetails.getActivo());
                     ponente.setActualizadoPor(ponenteDetails.getActualizadoPor());

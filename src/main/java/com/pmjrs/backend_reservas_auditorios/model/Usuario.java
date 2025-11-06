@@ -63,10 +63,8 @@ public class Usuario {
     @Column(name = "actualizado_el")
     private LocalDate actualizado_el;
 
-    // Constructor vacío requerido por JPA
     public Usuario() {}
 
-    // Constructor útil para crear un nuevo usuario
     public Usuario(
             String nombre,
             String apellidoPaterno,
@@ -88,10 +86,6 @@ public class Usuario {
         this.creado_por = creadoPor;
         this.creado_el = creadoEl;
     }
-
-    // ==========================
-    // Getters y Setters
-    // ==========================
 
     public Long getIdUsuario() { return id_usuario; }
     public void setIdUsuario(Long idUsuario) { this.id_usuario = idUsuario; }

@@ -9,20 +9,44 @@ public class RecursosArea {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_recursos_area")
     private Long id_recursos_area;
 
-    @Column(nullable = false)
+    @Column(name = "nombre_area", nullable = false)
     private String nombre_area;
 
+    @Column(name = "ubicacion_area")
     private String ubicacion_area;
+
+    @Column(name = "responsable_area")
     private String responsable_area;
+
+    @Column(name = "correo_contacto")
     private String correo_contacto;
+
+    @Column(name = "numero_contacto")
     private String numero_contacto;
 
+    @Column(name = "activo")
     private Integer activo;
+
+    @PrePersist
+    public void prePersist() {
+        if (activo == null) {
+            activo = 1;
+        }
+    }
+
+    @Column(name = "creado_por")
     private Integer creado_por;
+
+    @Column(name = "creado_el")
     private LocalDate creado_el;
+
+    @Column(name = "actualizado_por")
     private Integer actualizado_por;
+
+    @Column(name = "actualizado_el")
     private LocalDate actualizado_el;
 
     public RecursosArea() {}
@@ -71,7 +95,7 @@ public class RecursosArea {
 
     public Integer getActualizado_por() { return actualizado_por; }
     public void setActualizado_por(Integer actualizado_por) { this.actualizado_por = actualizado_por; }
-    
+
     public LocalDate getActualizado_el() { return actualizado_el; }
     public void setActualizado_el(LocalDate actualizado_el) { this.actualizado_el = actualizado_el; }
 }

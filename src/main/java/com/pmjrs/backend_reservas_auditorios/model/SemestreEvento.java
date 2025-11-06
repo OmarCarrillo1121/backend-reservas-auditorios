@@ -15,8 +15,8 @@ public class SemestreEvento {
     @Column(name = "id_semestre", nullable = false)
     private Integer id_semestre;
 
-    @Column(name = "id_evento", nullable = false)
-    private Integer id_evento;
+    @Column(name = "id_tipo_evento", nullable = false)
+    private Integer id_tipo_evento;
 
     @Column(name = "dia_evento", nullable = false)
     private LocalDate dia_evento;
@@ -40,7 +40,7 @@ public class SemestreEvento {
 
     public SemestreEvento(
         Integer id_semestre,
-        Integer id_evento,
+        Integer id_tipo_evento,
         LocalDate dia_evento,
         Integer activo,
         Integer creado_por,
@@ -49,7 +49,7 @@ public class SemestreEvento {
         LocalDate actualizado_el
     ) {
         this.id_semestre = id_semestre;
-        this.id_evento = id_evento;
+        this.id_tipo_evento = id_tipo_evento;
         this.dia_evento = dia_evento;
         this.activo = activo;
         this.creado_por = creado_por;
@@ -64,8 +64,8 @@ public class SemestreEvento {
     public Integer getId_semestre() { return id_semestre; }
     public void setId_semestre(Integer id_semestre) { this.id_semestre = id_semestre; }
 
-    public Integer getId_evento() { return id_evento; }
-    public void setId_evento(Integer id_evento) { this.id_evento = id_evento; }
+    public Integer getId_evento() { return id_tipo_evento; }
+    public void setId_evento(Integer id_tipo_evento) { this.id_tipo_evento = id_tipo_evento; }
 
     public LocalDate getDia_evento() { return dia_evento; }
     public void setDia_evento(LocalDate dia_evento) { this.dia_evento = dia_evento; }

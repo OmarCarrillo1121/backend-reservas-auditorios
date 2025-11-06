@@ -18,15 +18,19 @@ public class Ponente {
     @Column(name = "grado_ponente")
     private String grado_ponente;
 
-    @Column(name = "semblanza_ponente")
-    private String semblanza_ponente;
-
     @ManyToOne
     @JoinColumn(name = "tipo_ponente", nullable = false)
     private PonenteTipo tipo_ponente;
 
     @Column(name = "activo")
     private Integer activo;
+
+    @PrePersist
+    public void prePersist() {
+        if (activo == null) {
+            activo = 1;
+        }
+    }
 
     @Column(name = "creado_por")
     private Integer creado_por;
@@ -46,7 +50,6 @@ public class Ponente {
                    Integer activo, Integer creadoPor, LocalDate creadoEl, Integer actualizadoPor, LocalDate actualizadoEl) {
         this.nombre_ponente = nombrePonente;
         this.grado_ponente = gradoPonente;
-        this.semblanza_ponente = semblanzaPonente;
         this.tipo_ponente = tipoPonente;
         this.activo = activo;
         this.creado_por = creadoPor;
@@ -63,9 +66,6 @@ public class Ponente {
 
     public String getGradoPonente() { return grado_ponente; }
     public void setGradoPonente(String gradoPonente) { this.grado_ponente = gradoPonente; }
-
-    public String getSemblanzaPonente() { return semblanza_ponente; }
-    public void setSemblanzaPonente(String semblanzaPonente) { this.semblanza_ponente = semblanzaPonente; }
 
     public PonenteTipo getTipoPonente() { return tipo_ponente; }
     public void setTipoPonente(PonenteTipo tipoPonente) { this.tipo_ponente = tipoPonente; }

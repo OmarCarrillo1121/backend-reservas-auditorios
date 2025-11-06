@@ -4,16 +4,16 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "usuario_area")
-public class UsuarioArea {
+@Table(name = "usuario_rol")
+public class UsuarioRol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario_area")
-    private Long id_usuario_area;
+    @Column(name = "id_usuario_rol")
+    private Long id_usuario_rol;
 
-    @Column(name = "nombre_area", nullable = false)
-    private String nombre_area;
+    @Column(name = "nombre_rol", nullable = false)
+    private String nombre_rol;
 
     @Column(name = "activo")
     private Integer activo;
@@ -37,11 +37,11 @@ public class UsuarioArea {
     @Column(name = "actualizado_el")
     private LocalDate actualizado_el;
 
-    public UsuarioArea() {}
+    public UsuarioRol() {}
 
-    public UsuarioArea(String nombreArea, Integer activo, Integer creadoPor, LocalDate creadoEl,
+    public UsuarioRol(String nombreRol, Integer activo, Integer creadoPor, LocalDate creadoEl,
                        Integer actualizadoPor, LocalDate actualizadoEl) {
-        this.nombre_area = nombreArea;
+        this.nombre_rol = nombreRol;
         this.activo = activo;
         this.creado_por = creadoPor;
         this.creado_el = creadoEl;
@@ -49,11 +49,11 @@ public class UsuarioArea {
         this.actualizado_el = actualizadoEl;
     }
 
-    public Long getIdUsuarioArea() { return id_usuario_area; }
-    public void setIdUsuarioArea(Long idUsuarioArea) { this.id_usuario_area = idUsuarioArea; }
+    public Long getIdUsuarioRol() { return id_usuario_rol; }
+    public void setIdUsuarioRol(Long idUsuarioRol) { this.id_usuario_rol = idUsuarioRol; }
 
-    public String getNombreArea() { return nombre_area; }
-    public void setNombreArea(String nombreArea) { this.nombre_area = nombreArea; }
+    public String getNombreRol() { return nombre_rol; }
+    public void setNombreRol(String nombreRol) { this.nombre_rol = nombreRol; }
 
     public Integer getActivo() { return activo; }
     public void setActivo(Integer activo) { this.activo = activo; }
