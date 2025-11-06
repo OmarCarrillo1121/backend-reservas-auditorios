@@ -10,51 +10,59 @@ public class Reservacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_reservacion")
+    private Long id_reservacion;
 
     @ManyToOne
-    @JoinColumn(name = "id_auditorio")
-    private Auditorio auditorio;
+    @JoinColumn(name = "id_recinto", nullable = false)
+    private Recinto recinto;
 
     @ManyToOne
-    @JoinColumn(name = "id_solicitante")
+    @JoinColumn(name = "id_solicitante", nullable = false)
     private Usuario solicitante;
 
-    private LocalDate fechaReservacion;
-    private LocalTime horaInicio;
-    private LocalTime horaTermino;
-    private String status;
+    @Column(name = "fecha_reservacion", nullable = false)
+    private LocalDate fecha_reservacion;
+
+    @Column(name = "hora_inicio", nullable = false)
+    private LocalTime hora_inicio;
+
+    @Column(name = "hora_termino", nullable = false)
+    private LocalTime hora_termino;
+
+    @Column(name = "activo")
+    private Integer activo;
 
     public Reservacion() {}
 
-    public Reservacion(Auditorio auditorio, Usuario solicitante, LocalDate fechaReservacion,
-                       LocalTime horaInicio, LocalTime horaTermino, String status) {
-        this.auditorio = auditorio;
+    public Reservacion(Recinto recinto, Usuario solicitante, LocalDate fechaReservacion,
+                       LocalTime horaInicio, LocalTime horaTermino, Integer activo) {
+        this.recinto = recinto;
         this.solicitante = solicitante;
-        this.fechaReservacion = fechaReservacion;
-        this.horaInicio = horaInicio;
-        this.horaTermino = horaTermino;
-        this.status = status;
+        this.fecha_reservacion = fechaReservacion;
+        this.hora_inicio = horaInicio;
+        this.hora_termino = horaTermino;
+        this.activo = activo;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId_reservacion() { return id_reservacion; }
+    public void setId_reservacion(Long id_reservacion) { this.id_reservacion = id_reservacion; }
 
-    public Auditorio getAuditorio() { return auditorio; }
-    public void setAuditorio(Auditorio auditorio) { this.auditorio = auditorio; }
+    public Recinto getRecinto() { return recinto; }
+    public void setRecinto(Recinto recinto) { this.recinto = recinto; }
 
     public Usuario getSolicitante() { return solicitante; }
     public void setSolicitante(Usuario solicitante) { this.solicitante = solicitante; }
 
-    public LocalDate getFechaReservacion() { return fechaReservacion; }
-    public void setFechaReservacion(LocalDate fechaReservacion) { this.fechaReservacion = fechaReservacion; }
+    public LocalDate getFecha_reservacion() { return fecha_reservacion; }
+    public void setFecha_reservacion(LocalDate fecha_reservacion) { this.fecha_reservacion = fecha_reservacion; }
 
-    public LocalTime getHoraInicio() { return horaInicio; }
-    public void setHoraInicio(LocalTime horaInicio) { this.horaInicio = horaInicio; }
+    public LocalTime getHora_inicio() { return hora_inicio; }
+    public void setHora_inicio(LocalTime hora_inicio) { this.hora_inicio = hora_inicio; }
 
-    public LocalTime getHoraTermino() { return horaTermino; }
-    public void setHoraTermino(LocalTime horaTermino) { this.horaTermino = horaTermino; }
+    public LocalTime getHora_termino() { return hora_termino; }
+    public void setHora_termino(LocalTime hora_termino) { this.hora_termino = hora_termino; }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public Integer getActivo() { return activo; }
+    public void setActivo(Integer activo) { this.activo = activo; }
 }

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "auditorio")
-public class Auditorio {
+public class Recinto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +15,9 @@ public class Auditorio {
     private String edificio;
     private Integer capacidad;
 
-    public Auditorio() {}
+    public Recinto() {}
 
-    public Auditorio(String nombre, String ubicacion, String edificio, Integer capacidad) {
+    public Recinto(String nombre, String ubicacion, String edificio, Integer capacidad) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.edificio = edificio;
