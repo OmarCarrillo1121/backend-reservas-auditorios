@@ -10,134 +10,204 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-    private Long id_usuario;
+    private Long idUsuario;
 
-    @Column(name = "id_tipo_usuario")
-    private Integer id_tipo_usuario;
+    @ManyToOne
+    @JoinColumn(name = "id_rol_usuario", nullable = false)
+    private UsuarioCatalogoRol rol;
 
-    @Column(name = "nombre", nullable = false)
-    private String nombre;
+    @ManyToOne
+    @JoinColumn(name = "id_facultad_usuario")
+    private UsuarioCatalogoFacultad facultad;
+
+    @ManyToOne
+    @JoinColumn(name = "id_area_usuario")
+    private UsuarioCatalogoArea area;
+
+    @ManyToOne
+    @JoinColumn(name = "id_puesto_usuario")
+    private UsuarioCatalogoPuesto puesto;
+
+    @Column(name = "nombre_usuario")
+    private String nombreUsuario;
 
     @Column(name = "apellido_paterno")
-    private String apellido_paterno;
+    private String apellidoPaterno;
 
     @Column(name = "apellido_materno")
-    private String apellido_materno;
+    private String apellidoMaterno;
 
-    @Column(name = "correo", unique = true, nullable = false)
+    @Column(name = "correo")
     private String correo;
 
-    @Column(name = "contrasena", nullable = false)
+    @Column(name = "contrasena")
     private String contrasena;
 
     @Column(name = "telefono_fijo")
-    private String telefono_fijo;
+    private String telefonoFijo;
 
     @Column(name = "telefono_contacto")
-    private String telefono_contacto;
+    private String telefonoContacto;
 
-    @Column(name = "imagen_usuario")
-    private String imagen_usuario;
-
-    @Column(name = "facultad_usuario")
-    private String facultad_usuario;
-
-    @Column(name = "area_usuario")
-    private String area_usuario;
-
-    @Column(name = "puesto_usuario")
-    private String puesto_usuario;
+    @Column(name = "foto_perfil")
+    private String fotoPerfil;
 
     @Column(name = "activo")
     private Integer activo;
 
     @Column(name = "creado_por")
-    private Integer creado_por;
+    private Integer creadoPor;
 
     @Column(name = "creado_el")
-    private LocalDate creado_el;
+    private LocalDate creadoEl;
 
-    @Column(name = "actualizado_por")
-    private Integer actualizado_por;
+    @Column(name = "ultima_actualizacion_por")
+    private Integer ultimaActualizacionPor;
 
-    @Column(name = "actualizado_el")
-    private LocalDate actualizado_el;
+    @Column(name = "ultima_actualizacion_el")
+    private LocalDate ultimaActualizacionEl;
 
-    public Usuario() {}
-
-    public Usuario(
-            String nombre,
-            String apellidoPaterno,
-            String apellidoMaterno,
-            String correo,
-            String contrasena,
-            Integer idTipoUsuario,
-            Integer activo,
-            Integer creadoPor,
-            LocalDate creadoEl
-    ) {
-        this.nombre = nombre;
-        this.apellido_paterno = apellidoPaterno;
-        this.apellido_materno = apellidoMaterno;
-        this.correo = correo;
-        this.contrasena = contrasena;
-        this.id_tipo_usuario = idTipoUsuario;
-        this.activo = activo;
-        this.creado_por = creadoPor;
-        this.creado_el = creadoEl;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
-    public Long getIdUsuario() { return id_usuario; }
-    public void setIdUsuario(Long idUsuario) { this.id_usuario = idUsuario; }
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
-    public Integer getIdTipoUsuario() { return id_tipo_usuario; }
-    public void setIdTipoUsuario(Integer idTipoUsuario) { this.id_tipo_usuario = idTipoUsuario; }
+    public UsuarioCatalogoRol getRol() {
+        return rol;
+    }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setRol(UsuarioCatalogoRol rol) {
+        this.rol = rol;
+    }
 
-    public String getApellidoPaterno() { return apellido_paterno; }
-    public void setApellidoPaterno(String apellidoPaterno) { this.apellido_paterno = apellidoPaterno; }
+    public UsuarioCatalogoFacultad getFacultad() {
+        return facultad;
+    }
 
-    public String getApellidoMaterno() { return apellido_materno; }
-    public void setApellidoMaterno(String apellidoMaterno) { this.apellido_materno = apellidoMaterno; }
+    public void setFacultad(UsuarioCatalogoFacultad facultad) {
+        this.facultad = facultad;
+    }
 
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
+    public UsuarioCatalogoArea getArea() {
+        return area;
+    }
 
-    public String getContrasena() { return contrasena; }
-    public void setContrasena(String contrasena) { this.contrasena = contrasena; }
+    public void setArea(UsuarioCatalogoArea area) {
+        this.area = area;
+    }
 
-    public String getTelefonoFijo() { return telefono_fijo; }
-    public void setTelefonoFijo(String telefonoFijo) { this.telefono_fijo = telefonoFijo; }
+    public UsuarioCatalogoPuesto getPuesto() {
+        return puesto;
+    }
 
-    public String getTelefonoContacto() { return telefono_contacto; }
-    public void setTelefonoContacto(String telefonoContacto) { this.telefono_contacto = telefonoContacto; }
+    public void setPuesto(UsuarioCatalogoPuesto puesto) {
+        this.puesto = puesto;
+    }
 
-    public String getImagenUsuario() { return imagen_usuario; }
-    public void setImagenUsuario(String imagenUsuario) { this.imagen_usuario = imagenUsuario; }
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
 
-    public String getFacultadUsuario() { return facultad_usuario; }
-    public void setFacultadUsuario(String facultadUsuario) { this.facultad_usuario = facultadUsuario; }
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
 
-    public String getAreaUsuario() { return area_usuario; }
-    public void setAreaUsuario(String areaUsuario) { this.area_usuario = areaUsuario; }
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
 
-    public String getPuestoUsuario() { return puesto_usuario; }
-    public void setPuestoUsuario(String puestoUsuario) { this.puesto_usuario = puestoUsuario; }
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
 
-    public Integer getActivo() { return activo; }
-    public void setActivo(Integer activo) { this.activo = activo; }
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
 
-    public Integer getCreadoPor() { return creado_por; }
-    public void setCreadoPor(Integer creadoPor) { this.creado_por = creadoPor; }
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
+    }
 
-    public LocalDate getCreadoEl() { return creado_el; }
-    public void setCreadoEl(LocalDate creadoEl) { this.creado_el = creadoEl; }
+    public String getCorreo() {
+        return correo;
+    }
 
-    public Integer getActualizadoPor() { return actualizado_por; }
-    public void setActualizadoPor(Integer actualizadoPor) { this.actualizado_por = actualizadoPor; }
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-    public LocalDate getActualizadoEl() { return actualizado_el; }
-    public void setActualizadoEl(LocalDate actualizadoEl) { this.actualizado_el = actualizadoEl; }
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getTelefonoFijo() {
+        return telefonoFijo;
+    }
+
+    public void setTelefonoFijo(String telefonoFijo) {
+        this.telefonoFijo = telefonoFijo;
+    }
+
+    public String getTelefonoContacto() {
+        return telefonoContacto;
+    }
+
+    public void setTelefonoContacto(String telefonoContacto) {
+        this.telefonoContacto = telefonoContacto;
+    }
+
+    public String getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
+
+    public Integer getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Integer activo) {
+        this.activo = activo;
+    }
+
+    public Integer getCreadoPor() {
+        return creadoPor;
+    }
+
+    public void setCreadoPor(Integer creadoPor) {
+        this.creadoPor = creadoPor;
+    }
+
+    public LocalDate getCreadoEl() {
+        return creadoEl;
+    }
+
+    public void setCreadoEl(LocalDate creadoEl) {
+        this.creadoEl = creadoEl;
+    }
+
+    public Integer getUltimaActualizacionPor() {
+        return ultimaActualizacionPor;
+    }
+
+    public void setUltimaActualizacionPor(Integer ultimaActualizacionPor) {
+        this.ultimaActualizacionPor = ultimaActualizacionPor;
+    }
+
+    public LocalDate getUltimaActualizacionEl() {
+        return ultimaActualizacionEl;
+    }
+
+    public void setUltimaActualizacionEl(LocalDate ultimaActualizacionEl) {
+        this.ultimaActualizacionEl = ultimaActualizacionEl;
+    }
 }

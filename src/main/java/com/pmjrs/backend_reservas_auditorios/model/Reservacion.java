@@ -1,97 +1,219 @@
-package com.pmjrs.backend_reservas_auditorios.model;
+// package com.pmjrs.backend_reservas_auditorios.model;
 
-import jakarta.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+// import jakarta.persistence.*;
+// import java.time.LocalDate;
+// import java.time.LocalTime;
+// import java.util.ArrayList;
 
-@Entity
-@Table(name = "reservacion")
-public class Reservacion {
+// @Entity
+// @Table(name = "reservacion")
+// public class Reservacion {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_reservacion")
-    private Long id_reservacion;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     @Column(name = "id_reservacion")
+//     private Long idReservacion;
 
-    @ManyToOne
-    @JoinColumn(name = "id_recinto", nullable = false)
-    private Recinto recinto;
+//     @ManyToOne
+//     @JoinColumn(name = "id_recinto", nullable = true)
+//     private Recinto recinto;
 
-    @ManyToOne
-    @JoinColumn(name = "id_solicitante", nullable = false)
-    private Usuario solicitante;
+//     @ManyToOne
+//     @JoinColumn(name = "id_solicitante", nullable = true)
+//     private Usuario solicitante;
 
-    @Column(name = "fecha_reservacion", nullable = false)
-    private LocalDate fecha_reservacion;
+//     @ManyToOne
+//     @JoinColumn(name = "id_tipo_evento", nullable = true)
+//     private EventoCatalogoTipoEvento tipoEvento;
 
-    @Column(name = "hora_inicio", nullable = false)
-    private LocalTime hora_inicio;
+//     @ManyToOne
+//     @JoinColumn(name = "id_origen_evento", nullable = true)
+//     private EventoCatalogoOrigen origenEvento;
 
-    @Column(name = "hora_termino", nullable = false)
-    private LocalTime hora_termino;
+//     @Column(name = "nombre_evento", nullable = true)
+//     private String nombreEvento;
 
-    @Column(name = "activo")
-    private Integer activo;
+//     @Column(name = "descripcion_evento", nullable = true)
+//     private String descripcionEvento;
 
-    @Column(name = "creado_por")
-    private Integer creado_por;
+//     @Column(name = "fecha_evento", nullable = true)
+//     private LocalDate fechaEvento;
 
-    @Column(name = "creado_el")
-    private LocalDate creado_el;
+//     @Column(name = "hora_inicio", nullable = true)
+//     private LocalTime horaInicio;
 
-    @Column(name = "actualizado_por")
-    private Integer actualizado_por;
+//     @Column(name = "hora_termino", nullable = true)
+//     private LocalTime horaTermino;
 
-    @Column(name = "actualizado_el")
-    private LocalDate actualizado_el;
+//     // @OneToMany(mappedBy = "reservacion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//     // private List<ReservacionEstatus> estatusList = new ArrayList<>();
 
-    public Reservacion() {}
+//     @Column(name = "activo")
+//     private Integer activo;
 
-    public Reservacion(Recinto recinto, Usuario solicitante, LocalDate fechaReservacion,
-                       LocalTime horaInicio, LocalTime horaTermino, Integer activo,
-                       Integer creado_por, LocalDate creado_el, Integer actualizado_por, LocalDate actualizado_el) {
-        this.recinto = recinto;
-        this.solicitante = solicitante;
-        this.fecha_reservacion = fechaReservacion;
-        this.hora_inicio = horaInicio;
-        this.hora_termino = horaTermino;
-        this.activo = activo;
-        this.creado_por = creado_por;
-        this.creado_el = creado_el;
-        this.actualizado_por = actualizado_por;
-        this.actualizado_el = actualizado_el;
-    }
+//     @Column(name = "creado_por")
+//     private Integer creadoPor;
 
-    public Long getId_reservacion() { return id_reservacion; }
-    public void setId_reservacion(Long id_reservacion) { this.id_reservacion = id_reservacion; }
+//     @Column(name = "creado_el")
+//     private LocalDate creadoEl;
 
-    public Recinto getRecinto() { return recinto; }
-    public void setRecinto(Recinto recinto) { this.recinto = recinto; }
+//     @Column(name = "actualizado_por")
+//     private Integer actualizadoPor;
 
-    public Usuario getSolicitante() { return solicitante; }
-    public void setSolicitante(Usuario solicitante) { this.solicitante = solicitante; }
+//     @Column(name = "actualizado_el")
+//     private LocalDate actualizadoEl;
 
-    public LocalDate getFecha_reservacion() { return fecha_reservacion; }
-    public void setFecha_reservacion(LocalDate fecha_reservacion) { this.fecha_reservacion = fecha_reservacion; }
+//     public Reservacion() {}
 
-    public LocalTime getHora_inicio() { return hora_inicio; }
-    public void setHora_inicio(LocalTime hora_inicio) { this.hora_inicio = hora_inicio; }
+//     public Reservacion(
+//             Recinto recinto, 
+//             Usuario solicitante, 
+//             LocalDate fechaEvento,
+//             LocalTime horaInicio, 
+//             LocalTime horaTermino, 
+//             Integer activo,
+//             Integer creadoPor, 
+//             LocalDate creadoEl, 
+//             Integer actualizadoPor, 
+//             LocalDate actualizadoEl
+//     ) {
+//         this.recinto = recinto;
+//         this.solicitante = solicitante;
+//         this.fechaEvento = fechaEvento;
+//         this.horaInicio = horaInicio;
+//         this.horaTermino = horaTermino;
+//         this.activo = activo;
+//         this.creadoPor = creadoPor;
+//         this.creadoEl = creadoEl;
+//         this.actualizadoPor = actualizadoPor;
+//         this.actualizadoEl = actualizadoEl;
+//     }
 
-    public LocalTime getHora_termino() { return hora_termino; }
-    public void setHora_termino(LocalTime hora_termino) { this.hora_termino = hora_termino; }
+//     public Long getIdReservacion() {
+//         return idReservacion;
+//     }
 
-    public Integer getActivo() { return activo; }
-    public void setActivo(Integer activo) { this.activo = activo; }
+//     public void setIdReservacion(Long idReservacion) {
+//         this.idReservacion = idReservacion;
+//     }
 
-    public Integer getCreado_por() { return creado_por; }
-    public void setCreado_por(Integer creado_por) { this.creado_por = creado_por; }
+//     public Recinto getRecinto() {
+//         return recinto;
+//     }
 
-    public LocalDate getCreado_el() { return creado_el; }
-    public void setCreado_el(LocalDate creado_el) { this.creado_el = creado_el; }
+//     public void setRecinto(Recinto recinto) {
+//         this.recinto = recinto;
+//     }
 
-    public Integer getActualizado_por() { return actualizado_por; }
-    public void setActualizado_por(Integer actualizado_por) { this.actualizado_por = actualizado_por; }
+//     public Usuario getSolicitante() {
+//         return solicitante;
+//     }
 
-    public LocalDate getActualizado_el() { return actualizado_el; }
-    public void setActualizado_el(LocalDate actualizado_el) { this.actualizado_el = actualizado_el; }
-}
+//     public void setSolicitante(Usuario solicitante) {
+//         this.solicitante = solicitante;
+//     }
+
+//     public EventoCatalogoTipoEvento getTipoEvento() {
+//         return tipoEvento;
+//     }
+
+//     public void setTipoEvento(EventoCatalogoTipoEvento tipoEvento) {
+//         this.tipoEvento = tipoEvento;
+//     }
+
+//     public EventoCatalogoOrigen getOrigenEvento() {
+//         return origenEvento;
+//     }
+
+//     public void setOrigenEvento(EventoCatalogoOrigen origenEvento) {
+//         this.origenEvento = origenEvento;
+//     }
+
+//     public String getNombreEvento() {
+//         return nombreEvento;
+//     }
+
+//     public void setNombreEvento(String nombreEvento) {
+//         this.nombreEvento = nombreEvento;
+//     }
+
+//     public String getDescripcionEvento() {
+//         return descripcionEvento;
+//     }
+
+//     public void setDescripcionEvento(String descripcionEvento) {
+//         this.descripcionEvento = descripcionEvento;
+//     }
+
+//     public LocalDate getFechaReservacion() {
+//         return fechaEvento;
+//     }
+
+//     public void setFechaReservacion(LocalDate fechaEvento) {
+//         this.fechaEvento = fechaEvento;
+//     }
+
+//     public LocalTime getHoraInicio() {
+//         return horaInicio;
+//     }
+
+//     public void setHoraInicio(LocalTime horaInicio) {
+//         this.horaInicio = horaInicio;
+//     }
+
+//     public LocalTime getHoraTermino() {
+//         return horaTermino;
+//     }
+
+//     public void setHoraTermino(LocalTime horaTermino) {
+//         this.horaTermino = horaTermino;
+//     }
+
+//     // public List<ReservacionEstatus> getEstatusList() {
+//     //     return estatusList;
+//     // }
+
+//     // public void setEstatusList(List<ReservacionEstatus> estatusList) {
+//     //     this.estatusList = estatusList;
+//     // }
+
+//     public Integer getActivo() {
+//         return activo;
+//     }
+
+//     public void setActivo(Integer activo) {
+//         this.activo = activo;
+//     }
+
+//     public Integer getCreadoPor() {
+//         return creadoPor;
+//     }
+
+//     public void setCreadoPor(Integer creadoPor) {
+//         this.creadoPor = creadoPor;
+//     }
+
+//     public LocalDate getCreadoEl() {
+//         return creadoEl;
+//     }
+
+//     public void setCreadoEl(LocalDate creadoEl) {
+//         this.creadoEl = creadoEl;
+//     }
+
+//     public Integer getActualizadoPor() {
+//         return actualizadoPor;
+//     }
+
+//     public void setActualizadoPor(Integer actualizadoPor) {
+//         this.actualizadoPor = actualizadoPor;
+//     }
+
+//     public LocalDate getActualizadoEl() {
+//         return actualizadoEl;
+//     }
+
+//     public void setActualizadoEl(LocalDate actualizadoEl) {
+//         this.actualizadoEl = actualizadoEl;
+//     }
+// }

@@ -1,88 +1,88 @@
-package com.pmjrs.backend_reservas_auditorios.model;
+// package com.pmjrs.backend_reservas_auditorios.model;
 
-import jakarta.persistence.*;
-import java.time.LocalDate;
+// import jakarta.persistence.*;
+// import java.time.LocalDate;
 
-@Entity
-@Table(name = "recinto_equipamiento")
-public class RecintoEquipamiento {
+// @Entity
+// @Table(name = "recinto_equipamiento")
+// public class RecintoEquipamiento {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_recinto_equipamiento")
-    private Long id_recinto_equipamiento;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     @Column(name = "id_recinto_equipamiento")
+//     private Long id_recinto_equipamiento;
 
-    @ManyToOne
-    @JoinColumn(name = "id_recinto", nullable = false)
-    private Recinto recinto;
+//     @ManyToOne
+//     @JoinColumn(name = "id_recinto", nullable = false)
+//     private Recinto id_recinto;
 
-    @ManyToOne
-    @JoinColumn(name = "id_equipamiento", nullable = false)
-    private RecintoEquipamientoCatalogo equipamiento;
+//     @ManyToOne
+//     @JoinColumn(name = "id_equipamiento", nullable = false)
+//     private RecintoCatalogoEquipamiento id_equipamiento;
 
-    @Column(name = "activo")
-    private Integer activo;
+//     @Column(name = "activo")
+//     private Integer activo;
 
-    @PrePersist
-    public void prePersist() {
-        if (activo == null) {
-            activo = 1;
-        }
-    }
+//     @PrePersist
+//     public void prePersist() {
+//         if (activo == null) {
+//             activo = 1;
+//         }
+//     }
 
-    @Column(name = "creado_por")
-    private Integer creado_por;
+//     @Column(name = "creado_por")
+//     private Integer creado_por;
 
-    @Column(name = "creado_el")
-    private LocalDate creado_el;
+//     @Column(name = "creado_el")
+//     private LocalDate creado_el;
 
-    @Column(name = "actualizado_por")
-    private Integer actualizado_por;
+//     @Column(name = "actualizado_por")
+//     private Integer actualizado_por;
 
-    @Column(name = "actualizado_el")
-    private LocalDate actualizado_el;
+//     @Column(name = "actualizado_el")
+//     private LocalDate actualizado_el;
 
-    public RecintoEquipamiento() {}
+//     public RecintoEquipamiento() {}
 
-    public RecintoEquipamiento(
-            Recinto recinto,
-            RecintoEquipamientoCatalogo equipamiento,
-            Integer activo,
-            Integer creadoPor,
-            LocalDate creadoEl,
-            Integer actualizadoPor,
-            LocalDate actualizadoEl
-    ) {
-        this.recinto = recinto;
-        this.equipamiento = equipamiento;
-        this.activo = activo;
-        this.creado_por = creadoPor;
-        this.creado_el = creadoEl;
-        this.actualizado_por = actualizadoPor;
-        this.actualizado_el = actualizadoEl;
-    }
+//     public RecintoEquipamiento(
+//             Recinto idRecinto,
+//             RecintoCatalogoEquipamiento idEquipamiento,
+//             Integer activo,
+//             Integer creadoPor,
+//             LocalDate creadoEl,
+//             Integer actualizadoPor,
+//             LocalDate actualizadoEl
+//     ) {
+//         this.id_recinto = idRecinto;
+//         this.id_equipamiento = idEquipamiento;
+//         this.activo = activo;
+//         this.creado_por = creadoPor;
+//         this.creado_el = creadoEl;
+//         this.actualizado_por = actualizadoPor;
+//         this.actualizado_el = actualizadoEl;
+//     }
 
-    public Long getIdRecintoEquipamiento() { return id_recinto_equipamiento; }
-    public void setIdRecintoEquipamiento(Long id) { this.id_recinto_equipamiento = id; }
+//     public Long getIdRecintoEquipamiento() { return id_recinto_equipamiento; }
+//     public void setIdRecintoEquipamiento(Long id) { this.id_recinto_equipamiento = id; }
 
-    public Recinto getRecinto() { return recinto; }
-    public void setRecinto(Recinto recinto) { this.recinto = recinto; }
+//     public Recinto getRecinto() { return id_recinto; }
+//     public void setRecinto(Recinto recinto) { this.id_recinto = recinto; }
 
-    public RecintoEquipamientoCatalogo getEquipamiento() { return equipamiento; }
-    public void setEquipamiento(RecintoEquipamientoCatalogo equipamiento) { this.equipamiento = equipamiento; }
+//     public RecintoCatalogoEquipamiento getEquipamiento() { return id_equipamiento; }
+//     public void setEquipamiento(RecintoCatalogoEquipamiento equipamiento) { this.id_equipamiento = equipamiento; }
 
-    public Integer getActivo() { return activo; }
-    public void setActivo(Integer activo) { this.activo = activo; }
+//     public Integer getActivo() { return activo; }
+//     public void setActivo(Integer activo) { this.activo = activo; }
 
-    public Integer getCreadoPor() { return creado_por; }
-    public void setCreadoPor(Integer creadoPor) { this.creado_por = creadoPor; }
+//     public Integer getCreadoPor() { return creado_por; }
+//     public void setCreadoPor(Integer creadoPor) { this.creado_por = creadoPor; }
 
-    public LocalDate getCreadoEl() { return creado_el; }
-    public void setCreadoEl(LocalDate creadoEl) { this.creado_el = creadoEl; }
+//     public LocalDate getCreadoEl() { return creado_el; }
+//     public void setCreadoEl(LocalDate creadoEl) { this.creado_el = creadoEl; }
 
-    public Integer getActualizadoPor() { return actualizado_por; }
-    public void setActualizadoPor(Integer actualizadoPor) { this.actualizado_por = actualizadoPor; }
+//     public Integer getActualizadoPor() { return actualizado_por; }
+//     public void setActualizadoPor(Integer actualizadoPor) { this.actualizado_por = actualizadoPor; }
 
-    public LocalDate getActualizadoEl() { return actualizado_el; }
-    public void setActualizadoEl(LocalDate actualizadoEl) { this.actualizado_el = actualizadoEl; }
-}
+//     public LocalDate getActualizadoEl() { return actualizado_el; }
+//     public void setActualizadoEl(LocalDate actualizadoEl) { this.actualizado_el = actualizadoEl; }
+// }
