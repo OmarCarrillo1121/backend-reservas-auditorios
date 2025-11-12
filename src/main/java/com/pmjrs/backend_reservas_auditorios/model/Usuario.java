@@ -12,21 +12,21 @@ public class Usuario {
     @Column(name = "id_usuario")
     private Long idUsuario;
 
-    @ManyToOne
-    @JoinColumn(name = "id_rol_usuario", nullable = false)
-    private UsuarioCatalogoRol rol;
+    // @ManyToOne
+    // @JoinColumn(name = "id_rol_usuario", nullable = false)
+    // private UsuarioCatalogoRol rol;
 
-    @ManyToOne
-    @JoinColumn(name = "id_facultad_usuario")
-    private UsuarioCatalogoFacultad facultad;
+    // @ManyToOne
+    // @JoinColumn(name = "id_facultad_usuario")
+    // private UsuarioCatalogoFacultad facultad;
 
-    @ManyToOne
-    @JoinColumn(name = "id_area_usuario")
-    private UsuarioCatalogoArea area;
+    // @ManyToOne
+    // @JoinColumn(name = "id_area_usuario")
+    // private UsuarioCatalogoArea area;
 
-    @ManyToOne
-    @JoinColumn(name = "id_puesto_usuario")
-    private UsuarioCatalogoPuesto puesto;
+    // @ManyToOne
+    // @JoinColumn(name = "id_puesto_usuario")
+    // private UsuarioCatalogoPuesto puesto;
 
     @Column(name = "nombre_usuario")
     private String nombreUsuario;
@@ -75,37 +75,37 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public UsuarioCatalogoRol getRol() {
-        return rol;
-    }
+    // public UsuarioCatalogoRol getRol() {
+    //     return rol;
+    // }
 
-    public void setRol(UsuarioCatalogoRol rol) {
-        this.rol = rol;
-    }
+    // public void setRol(UsuarioCatalogoRol rol) {
+    //     this.rol = rol;
+    // }
 
-    public UsuarioCatalogoFacultad getFacultad() {
-        return facultad;
-    }
+    // public UsuarioCatalogoFacultad getFacultad() {
+    //     return facultad;
+    // }
 
-    public void setFacultad(UsuarioCatalogoFacultad facultad) {
-        this.facultad = facultad;
-    }
+    // public void setFacultad(UsuarioCatalogoFacultad facultad) {
+    //     this.facultad = facultad;
+    // }
 
-    public UsuarioCatalogoArea getArea() {
-        return area;
-    }
+    // public UsuarioCatalogoArea getArea() {
+    //     return area;
+    // }
 
-    public void setArea(UsuarioCatalogoArea area) {
-        this.area = area;
-    }
+    // public void setArea(UsuarioCatalogoArea area) {
+    //     this.area = area;
+    // }
 
-    public UsuarioCatalogoPuesto getPuesto() {
-        return puesto;
-    }
+    // public UsuarioCatalogoPuesto getPuesto() {
+    //     return puesto;
+    // }
 
-    public void setPuesto(UsuarioCatalogoPuesto puesto) {
-        this.puesto = puesto;
-    }
+    // public void setPuesto(UsuarioCatalogoPuesto puesto) {
+    //     this.puesto = puesto;
+    // }
 
     public String getNombreUsuario() {
         return nombreUsuario;
