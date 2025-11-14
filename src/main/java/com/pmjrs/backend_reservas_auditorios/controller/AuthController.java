@@ -3,10 +3,11 @@ package com.pmjrs.backend_reservas_auditorios.controller;
 import com.pmjrs.backend_reservas_auditorios.dto.LoginRequest;
 import com.pmjrs.backend_reservas_auditorios.dto.RegisterRequest;
 import com.pmjrs.backend_reservas_auditorios.model.Usuario;
-import com.pmjrs.backend_reservas_auditorios.model.UsuarioCatalogoRol;
 import com.pmjrs.backend_reservas_auditorios.repository.UsuarioRepository;
-import com.pmjrs.backend_reservas_auditorios.repository.UsuarioCatalogoRolRepository;
 import com.pmjrs.backend_reservas_auditorios.util.JwtUtil;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -26,21 +27,38 @@ public class AuthController {
     private final JwtUtil jwtUtil;
     private final AuthenticationManager authenticationManager;
     private final UsuarioRepository usuarioRepository;
-    private final UsuarioCatalogoRolRepository rolRepository;
     private final PasswordEncoder passwordEncoder;
 
     public AuthController(
             JwtUtil jwtUtil,
             AuthenticationManager authenticationManager,
             UsuarioRepository usuarioRepository,
-            UsuarioCatalogoRolRepository rolRepository,
             PasswordEncoder passwordEncoder
     ) {
         this.jwtUtil = jwtUtil;
         this.authenticationManager = authenticationManager;
         this.usuarioRepository = usuarioRepository;
-        this.rolRepository = rolRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<?> getUserInfo(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return ResponseEntity.status(401).body("No token provided");
+        }
+
+        String token = authHeader.substring(7);
+        String username = jwtUtil.extractUsername(token);
+
+        var usuario = usuarioRepository.findByCorreo(username);
+
+        if (usuario.isEmpty()) {
+            return ResponseEntity.status(404).body("Usuario no encontrado");
+        }
+
+        return ResponseEntity.ok(usuario.get());
     }
 
     @PostMapping("/register")
@@ -57,12 +75,13 @@ public class AuthController {
         usuario.setContrasena(passwordEncoder.encode(req.getContrasena()));
         usuario.setTelefonoFijo(req.getTelefonoFijo());
         usuario.setTelefonoContacto(req.getTelefonoContacto());
+        usuario.setRolUsuario(req.getRolUsuario());
+        usuario.setFacultadUsuario(req.getFacultadUsuario());
+        usuario.setAreaUsuario(req.getAreaUsuario());
+        usuario.setPuestoUsuario(req.getPuestoUsuario());
+
         usuario.setActivo(1);
         usuario.setCreadoEl(LocalDate.now());
-
-        // UsuarioCatalogoRol rol = rolRepository.findById(req.getIdRolUsuario())
-        //         .orElseThrow(() -> new RuntimeException("Rol no encontrado"));
-        // usuario.setRol(rol);
 
         usuarioRepository.save(usuario);
 

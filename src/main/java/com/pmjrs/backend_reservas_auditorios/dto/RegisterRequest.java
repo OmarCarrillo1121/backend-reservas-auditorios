@@ -8,9 +8,12 @@ public class RegisterRequest {
     private String contrasena;
     private String telefonoFijo;
     private String telefonoContacto;
-    private Long idRolUsuario;
 
-    // Getters y setters
+    private String rolUsuario;
+    private String facultadUsuario;
+    private String areaUsuario;
+    private String puestoUsuario;
+
     public String getNombreUsuario() { return nombreUsuario; }
     public void setNombreUsuario(String nombreUsuario) { this.nombreUsuario = nombreUsuario; }
 
@@ -32,6 +35,15 @@ public class RegisterRequest {
     public String getTelefonoContacto() { return telefonoContacto; }
     public void setTelefonoContacto(String telefonoContacto) { this.telefonoContacto = telefonoContacto; }
 
-    public Long getIdRolUsuario() { return idRolUsuario; }
-    public void setIdRolUsuario(Long idRolUsuario) { this.idRolUsuario = idRolUsuario; }
+    public String getRolUsuario() { return rolUsuario; }
+    public void setRolUsuario(String rolUsuario) { this.rolUsuario = rolUsuario; }
+
+    public String getFacultadUsuario() { return facultadUsuario; }
+    public void setFacultadUsuario(String facultadUsuario) { this.facultadUsuario = facultadUsuario; }
+
+    public String getAreaUsuario() { return areaUsuario; }
+    public void setAreaUsuario(String areaUsuario) { this.areaUsuario = areaUsuario; }
+
+    public String getPuestoUsuario() { return puestoUsuario; }
+    public void setPuestoUsuario(String puestoUsuario) { this.puestoUsuario = puestoUsuario; }
 }

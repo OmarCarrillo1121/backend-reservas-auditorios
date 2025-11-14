@@ -1,3 +1,4 @@
+// ...existing code...
 package com.pmjrs.backend_reservas_auditorios.dto;
 
 import java.time.LocalDate;
@@ -11,14 +12,10 @@ public record UsuarioDTO(
         String telefonoFijo,
         String telefonoContacto,
         String fotoPerfil,
-        // Long idRolUsuario,
-        // String nombreRol,
-        // Long idFacultadUsuario,
-        // String nombreFacultad,
-        // Long idAreaUsuario,
-        // String nombreArea,
-        // Long idPuestoUsuario,
-        // String nombrePuesto,
+        String rolUsuario,
+        String facultadUsuario,
+        String areaUsuario,
+        String puestoUsuario,
         Integer activo,
         Integer creadoPor,
         LocalDate creadoEl,
